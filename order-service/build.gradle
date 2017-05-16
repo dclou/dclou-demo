@@ -1,0 +1,13 @@
+
+dependencies {
+
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+
+	compile('org.springframework.cloud:spring-cloud-starter-sleuth') // Add the [Sleuth] logging libraries
+	compile('org.springframework.cloud:spring-cloud-stream-binder-rabbit') // Add the [Sleuth] Rabbit messaging binder
+	compile('org.springframework.cloud:spring-cloud-sleuth-stream') // Add the [Sleuth] messaging stream feature
+
+	compile('drip-cloud:metrics:prometheus')
+}
+

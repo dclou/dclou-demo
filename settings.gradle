@@ -1,0 +1,12 @@
+rootProject.name = 'drip-cloud-demo'
+
+// http://stackoverflow.com/questions/37147407/canonical-setup-of-gradle-build
+buildCache {
+	local {
+		directory = "${settingsDir}/.gradle/build-cache"
+	}
+}
+includeBuild '../dclou-platform/core'
+include 'client-service', 'order-service'
+include 'services-api', 'services-api:client-service-api', 'services-api:order-service-api'
+

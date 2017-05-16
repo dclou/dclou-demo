@@ -1,0 +1,51 @@
+spring:
+  data:
+    mongodb:
+      host: db
+  application:
+    name: order-service
+  logging:
+    pattern:
+      console: "%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]){yellow} %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+
+# sleuth async messaging
+  rabbitmq:
+    addresses: rabbit-mon
+    username: admin
+    password: admin
+    virtual-host: rabbit-mon
+
+  sleuth:
+      sampler:
+        percentage: 1
+
+# in direct usage
+#  zipkin:
+#    baseUrl: http://zipkin-server:9411/
+
+  cloud:
+    config:
+      uri:
+      #profile: production
+      #label: master
+      discovery:
+              enabled: true
+              service-id: config-service
+encrypt:
+  failOnError: false
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    healthcheck:
+          enabled: true
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/
+  instance:
+      hostname: micro01-service
+      prefer-ip-address: true
+      lease-expiration-duration-in-seconds: 60
+      lease-renewal-interval-in-seconds: 30
+
+
+management.security.enabled: false
